@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Gestão Avícola</title>
+<meta name="theme-color" content="#1b3a2e">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{color-scheme:light;--ink:#1c2b24;--g:#2d6a4f;--gd:#1b3a2e;--gold:#e0a526;--bg:#f7f6f2;--mut:#6f7c74;--r:#b4452f;--ln:#ebebe4}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font:15px/1.5 system-ui,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--ln);background:rgba(247,246,242,.92);position:sticky;top:0;z-index:5;backdrop-filter:blur(8px)}
+.lg{width:40px;height:40px;border-radius:12px;background:var(--gd);display:grid;place-items:center;overflow:hidden;flex-shrink:0}.lg img{width:100%;height:100%;object-fit:cover}.lg svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+header b{display:block;font-size:15px;line-height:1.2}header span{font-size:12px;color:var(--mut)}
+.mb{margin-left:auto;width:42px;height:42px;border-radius:12px;border:1px solid var(--ln);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.ic{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+main{max-width:1000px;margin:auto;padding:22px 18px 60px}
+.ph{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.eye{font-size:11px;letter-spacing:.14em;color:var(--mut);text-transform:uppercase}h1{font-size:27px;margin:2px 0;letter-spacing:-.02em}.sub{color:var(--mut);font-size:13px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.b{font:inherit;font-size:14px;font-weight:600;border-radius:12px;padding:11px 16px;border:1px solid var(--ln);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;gap:8px;align-items:center;justify-content:center}
+.b.p{background:var(--g);color:#fff;border-color:var(--g)}.b.s{padding:6px 11px;font-size:12px;font-weight:500;border-radius:99px;background:#f1f0ea}.b.s.on{background:var(--gd);color:#fff}.b.d{color:var(--r)}.b.w{width:100%;margin-top:16px}
+.hero{background:var(--gd) radial-gradient(circle at 95% 0,rgba(224,165,38,.35),transparent 42%);color:#fff;border-radius:18px;padding:22px;margin-bottom:12px}
+.hero .k{font-size:11px;letter-spacing:.14em;opacity:.7}.hero .v{font-size:28px;font-weight:650;margin:6px 0 16px}.hero .ft{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.15);padding-top:12px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}.g3{grid-template-columns:repeat(3,1fr)}
+.kp{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:14px;min-width:0}
+.kh{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}.kh i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#e8f1ec;color:var(--g)}
+.kv{font-size:22px;font-weight:650;margin:8px 0 2px}.ks{font-size:12px;color:var(--mut)}.g3 .kp{padding:12px}.g3 .kv{font-size:20px}.g3 .ks{font-size:11px}.g3 .kh{letter-spacing:0;text-transform:none;font-size:11px}
+.pos{color:var(--g)}.neg{color:var(--r)}
+.card{background:#fff;border:1px solid var(--ln);border-radius:16px;margin-bottom:14px;overflow:hidden}.ch{padding:14px 16px;border-bottom:1px solid var(--ln)}.ch b{font-size:15px}.cb{padding:16px}
+.emp{text-align:center;padding:22px 10px}.emp i{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#f1f0ea;color:var(--mut);margin-bottom:8px}
+.sp{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0}.bl{background:#f7f6f2;border-radius:12px;padding:10px 14px;margin-bottom:10px}
+.bar{display:flex;align-items:center;gap:10px;margin:12px 0}.bar span:first-child{width:110px;font-size:13px}.bar i{display:block;height:18px;background:var(--g);border-radius:6px;min-width:3px}.bar i.top{background:var(--gold)}.bar .t{flex:1}.bar b{font-size:12px;white-space:nowrap}
+.ok{display:flex;gap:10px;align-items:center;background:#e8f1ec;color:var(--g);border-radius:10px;padding:12px 14px}
+.seg{display:flex;background:#fff;border:1px solid var(--ln);border-radius:12px;padding:3px}.seg button{border:0;background:none;padding:8px 14px;border-radius:9px;font:inherit;cursor:pointer;color:var(--mut)}.seg .on{background:var(--gd);color:#fff}
+.wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}th{text-align:left;color:var(--mut);font-weight:500;font-size:12px;padding:8px 6px}td{padding:11px 6px;border-top:1px solid var(--ln);font-size:13px}td:last-child{text-align:right;white-space:nowrap}
+.nt{background:#fff4d6;color:#7a5a00;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px}
+.fm{display:grid;gap:14px}label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--mut)}label.chk{flex-direction:row;align-items:center;gap:10px;color:var(--ink)}.chk input{width:auto}
+input,.in{font:inherit;width:100%;padding:13px 14px;background:#f5f4ee;border:1px solid var(--ln);border-radius:12px;color:var(--ink);text-align:left}input:focus{outline:2px solid var(--g)}
+.sel{cursor:pointer;display:flex;justify-content:space-between}.sel::after{content:'▾';color:var(--mut)}
+.bk{position:fixed;inset:0;background:rgba(20,30,25,.45);backdrop-filter:blur(4px);z-index:20}
+.sh{position:fixed;left:0;right:0;bottom:0;max-height:88vh;overflow:auto;background:#fff;border-radius:22px 22px 0 0;padding:20px;z-index:21;max-width:560px;margin:auto}
+.shh{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:17px}.x{border:0;background:#f1f0ea;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+#pk .bk{z-index:30}#pk .sh{z-index:31}.op{display:block;width:100%;text-align:left;font:inherit;padding:14px;border:0;background:none;border-radius:12px;cursor:pointer;color:var(--ink)}.op.on{background:#e8f1ec;color:var(--g);font-weight:600}
+.dw{position:fixed;top:0;bottom:0;left:0;width:300px;max-width:85vw;background:#fff;z-index:21;padding:18px;overflow:auto}
+.ni{display:flex;gap:12px;align-items:center;width:100%;padding:12px;border:0;background:none;border-radius:12px;font:inherit;cursor:pointer;text-align:left;color:var(--ink)}.ni.on{background:#e8f1ec}.nh{font-size:11px;letter-spacing:.14em;color:var(--mut);margin:18px 6px 6px}
+.lk{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}.lk.dark{background:#000;color:#fff}.lk input{max-width:320px;text-align:center}.lk .lg{width:64px;height:64px}
+@media(max-width:600px){main{padding:16px 14px 50px}h1{font-size:23px}.bar span:first-child{width:80px}}
+@media print{header,.acts,.nt,.b{display:none!important}}
+</style>
+</head>
+<body>
+<header id="hd"></header><main id="main"></main><div id="dr"></div><div id="md"></div><div id="pk"></div><div id="lock"></div>
+<input type="file" id="imp" hidden accept=".json"><input type="file" id="lg" hidden accept="image/*">
+<script>
+const K='avi_v1',SP=['Galinha','Pato'],$=s=>document.querySelector(s);
+const def=()=>({aves:{Galinha:{Adulta:0,Cria:0},Pato:{Adulta:0,Cria:0}},mort:{Galinha:0,Pato:0},mortLog:[],postura:[],incub:[],ovos:{Galinha:0,Pato:0},abat:{Galinha:0,Pato:0},custos:[],vendas:[],favo:30,logo:'',nome:'A minha exploração',racao:{kg:0,dia:0},saude:[],pin:'',lic:null});
+let D;try{D=Object.assign(def(),JSON.parse(localStorage.getItem(K))||{})}catch(e){D=def()}
+let PAGE='dash',PER='all',FIL='all',OK=false,PS,PT;
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(D))}catch(e){alert('Sem espaço para guardar os dados.')}};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const mzn=n=>(n||0).toLocaleString('pt-PT',{maximumFractionDigits:2})+' MZN';
+const today=()=>new Date().toISOString().slice(0,10);
+const addD=(d,n)=>{const x=new Date(d+'T12:00:00');x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)};
+const dd=(a,b)=>Math.round((new Date(a+'T12:00:00')-new Date(b+'T12:00:00'))/864e5);
+const fmt=d=>d.split('-').reverse().join('/');
+if(!D.lic){D.lic={exp:addD(today(),30)};save()}
+const num=id=>parseFloat($('#'+id).value)||0;
+const val=id=>{const e=$('#'+id);return e.dataset.v!==undefined?e.dataset.v:e.value};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const live=s=>D.aves[s].Adulta+D.aves[s].Cria;
+const inP=x=>PER==='all'||x.data.startsWith(today().slice(0,7));
+const fld=(l,h)=>`<label>${l}${h}</label>`;
+const inp=(id,t='number',v='')=>`<input id="${id}" type="${t}" ${t==='number'?'min="0" step="any"':''} value="${v}">`;
+const sel=(id,a,v)=>{a=a.map(x=>Array.isArray(x)?x:[x,x]);const c=a.find(x=>x[0]===v)||a[0];return `<button type="button" class="in sel" id="${id}" data-v="${esc(c[0])}" data-o="${esc(JSON.stringify(a))}" onclick="pick('${id}')">${esc(c[1])}</button>`};
+function pick(id){const e=$('#'+id),a=JSON.parse(e.dataset.o);$('#pk').innerHTML=`<div class="bk" onclick="$('#pk').innerHTML=''"></div><div class="sh"><div class="shh"><b>Escolher</b></div>${a.map(([v,l],i)=>`<button class="op ${v===e.dataset.v?'on':''}" data-i="${i}">${esc(l)}</button>`).join('')}</div>`;
+ $('#pk').querySelectorAll('.op').forEach(b=>b.onclick=()=>{const o=a[b.dataset.i];e.dataset.v=o[0];e.textContent=o[1];$('#pk').innerHTML=''})}
+function openM(t,b,l,fn){$('#md').innerHTML=`<div class="bk" onclick="closeM()"></div><div class="sh"><div class="shh"><b>${t}</b><button class="x" onclick="closeM()">${ic('x')}</button></div><div class="fm">${b}</div>${fn?`<button class="b p w" onclick="${fn}">${l}</button>`:''}</div>`}
+const closeM=()=>{$('#md').innerHTML='';$('#pk').innerHTML=''};
+const lbl=(t,s)=>({abat:s+(s==='Pato'?' abatido':' abatida'),ovos:'Ovos de '+s.toLowerCase(),cria:'Crias de '+s.toLowerCase()}[t]);
+const favos=n=>{const f=Math.floor(n/D.favo),r=n%D.favo;return f+' favo'+(f===1?'':'s')+' completo'+(f===1?'':'s')+(r?` + 1 incompleto (${r} ovos)`:'')};
+const nacub=s=>D.incub.filter(l=>!l.fim&&l.sp===s).reduce((a,l)=>a+l.colocados-l.chocados,0);
+/* licença */
+const SEC='avi#2026!chave',E0=Date.UTC(2020,0,1);
+const hsh=s=>{let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)>>>0}return h};
+const mk=n=>{const a=n.toString(36).toUpperCase().padStart(3,'0');return 'AVI-'+a+'-'+hsh(a+'|'+SEC).toString(36).toUpperCase().padStart(7,'0').slice(-6)};
+const dec=c=>{const m=/^AVI-([0-9A-Z]{3})-([0-9A-Z]{6})$/.exec(String(c).trim().toUpperCase());if(!m||mk(parseInt(m[1],36))!==m[0])return null;return new Date(E0+parseInt(m[1],36)*864e5).toISOString().slice(0,10)};
+const leftMs=()=>new Date(D.lic.exp+'T00:00:00')-Date.now();
+function tleft(){const l=leftMs();if(l<=0)return 'expirada';const d=Math.floor(l/864e5),h=Math.floor(l%864e5/36e5);return d?`${d} dia${d>1?'s':''}${h?` e ${h} h`:''}`:`${h} h`}
+function ativar(c){const d=dec(c);if(!d)return alert('Código inválido.');if(d<=D.lic.exp)return alert('Este código é antigo ou já foi usado.');D.lic.exp=d;save();alert('Licença ativada até '+fmt(d)+'.');gate()}
+function entrar(){if(val('pw')===D.pin){OK=true;gate()}else alert('Senha incorreta.')}
+function gate(){const L=$('#lock');
+ if(leftMs()<=0){L.innerHTML=`<div class="lk dark"><svg width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="#e5382b" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><h2 style="margin:0">Inserir código de licença</h2><div style="font-size:12px;opacity:.7">Contacte o desenvolvedor</div><input id="lc" placeholder="AVI-XXX-XXXXXX" style="background:#111;color:#fff;border-color:#333"><button class="b p" onclick="ativar($('#lc').value)">Ativar</button></div>`;return}
+ if(D.pin&&!OK){L.innerHTML=`<div class="lk"><div class="lg">${logo()}</div><h2 style="margin:0">${esc(D.nome)}</h2><div class="sub">Digite a senha para entrar</div><input id="pw" type="password" placeholder="Senha"><button class="b p" onclick="entrar()">Entrar</button></div>`;return}
+ L.innerHTML='';render()}
+setInterval(()=>{if(leftMs()<=0&&!$('#lock').querySelector('.dark'))gate()},60000);
+
+/* ---------- ações ---------- */
+function addAves(){const q=num('q');if(q<=0)return;D.aves[val('s')][val('t')]+=q;const c=num('c');
+ if(c>0)D.custos.push({id:uid(),data:today(),cat:'Aquisição de aves',sp:val('s'),valor:c,desc:q+' '+val('t').toLowerCase()+'(s)'});save();render()}
+function addPostura(){const q=num('q'),i=num('i');if(q<=0)return;if(i>q)return alert('A incubadora não pode ter mais ovos do que os postos.');
+ const s=val('s');D.postura.push({id:uid(),data:val('d'),sp:s,qtd:q});D.ovos[s]+=q-i;if(i>0)D.incub.push({id:uid(),sp:s,data:val('d'),colocados:i,chocados:0,fim:''});save();render()}
+function chocar(){const l=D.incub.find(x=>x.id===val('l'));if(!l)return alert('Não há lote em curso.');const falta=l.colocados-l.chocados,c=parseInt(val('c'));
+ if(isNaN(c)||c<0||c>falta)return alert('Número inválido. Máximo possível neste lote: '+falta);
+ l.chocados+=c;D.aves[l.sp].Cria+=c;if($('#e').checked)l.fim=val('d');save();render()}
+function addFavo(){const q=num('q');if(q<=0)return;D.ovos[val('s')]+=val('t')==='Favos completos'?q*D.favo:Math.min(q,D.favo-1);save();render()}
+function baixaOvos(){const q=num('q'),s=val('s');if(q<=0||q>D.ovos[s])return alert('Quantidade inválida.');D.ovos[s]-=q;save();render()}
+function setFavo(){const n=parseInt(val('fv'));if(n>0){D.favo=n;save();render()}}
+function abater(){const q=parseInt(val('q')),s=val('s'),t=val('t');if(!q||q<=0||q>D.aves[s][t])return alert('Não há aves suficientes.');D.aves[s][t]-=q;D.abat[s]+=q;save();render()}
+function addCusto(){const v=num('v');if(v<=0)return;D.custos.push({id:uid(),data:val('d'),cat:val('c'),sp:val('s'),valor:v,desc:val('x')});save();render()}
+function applyV(v,sg){if(v.tipo==='abat')D.abat[v.sp]-=sg*v.base;else if(v.tipo==='ovos')D.ovos[v.sp]-=sg*v.base;else D.aves[v.sp].Cria-=sg*v.base}
+function addVenda(){const t=val('t'),s=val('s'),q=num('q'),p=num('p');if(q<=0||p<=0)return;const un=t==='ovos'?val('u'):'un';
+ const base=t==='ovos'&&un==='Favo'?q*D.favo:q,av=t==='abat'?D.abat[s]:t==='ovos'?D.ovos[s]:D.aves[s].Cria;
+ if(base>av)return alert('Não tem stock suficiente. Tem apenas '+av+'.');const v={id:uid(),data:val('d'),tipo:t,sp:s,qtd:q,un,base,preco:p,total:q*p,cliente:val('cl').trim(),pago:val('pg')==='Pago'};applyV(v,1);D.vendas.push(v);save();render()}
+function del(k,id){if(!confirm('Remover este registo?'))return;if(k==='vendas')applyV(D.vendas.find(x=>x.id===id),-1);D[k]=D[k].filter(x=>x.id!==id);save();render()}
+function exportar(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(D)],{type:'application/json'}));a.download='avicola-'+today()+'.json';a.click()}
+$('#imp').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{D=Object.assign(def(),JSON.parse(t));save();render()}catch(x){alert('Ficheiro inválido.')}})};
+$('#lg').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{D.logo=r.result;save();render()};r.readAsDataURL(f)};
+
+
+const IC={grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',bird:'<path d="M16 7h.01M3 20c0-6 4-10 9-10l3-4 1.5 2.5L20 8l-2 2c0 5-4 10-10 10z"/>',egg:'<path d="M12 3c-4 0-7 6-7 11a7 7 0 0014 0c0-5-3-11-7-11z"/>',box:'<path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/>',leg:'<circle cx="9" cy="15" r="5"/><path d="M13 11l6-6M17 3l4 4"/>',grain:'<path d="M12 22V8M12 8c-3 0-5-2-5-5 3 0 5 2 5 5zM12 8c3 0 5-2 5-5-3 0-5 2-5 5zM12 15c-3 0-5-2-5-5 3 0 5 2 5 5zM12 15c3 0 5-2 5-5-3 0-5 2-5 5z"/>',heart:'<path d="M12 21C5 15 3 11 3 8a5 5 0 019-3 5 5 0 019 3c0 3-2 7-9 13z"/>',money:'<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="3"/>',wallet:'<path d="M3 7h16a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2zM3 7l12-3v3M16 14h2"/>',gear:'<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/>',plus:'<path d="M12 5v14M5 12h14"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',check:'<path d="M5 12l5 5 9-10"/>',o:'<circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/>'};
+const ic=n=>`<svg class="ic" viewBox="0 0 24 24">${IC[n]}</svg>`;
+const logo=()=>D.logo?`<img src="${D.logo}" alt="">`:'<svg viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6 7-6 0 4-3 6-7 6zM12 15c0-3-2-5-6-5 0 3 2 5 6 5z"/></svg>';
+const head=(e,t,s,b='')=>`<div class="ph"><div><div class="eye">${e}</div><h1>${t}</h1><div class="sub">${s}</div></div><div class="acts">${b}</div></div>`;
+const kp=(l,v,s,i,c='',go='')=>`<div class="kp" ${go?`onclick="go('${go}')" style="cursor:pointer"`:''}><div class="kh"><span>${l}</span>${i?`<i>${ic(i)}</i>`:''}</div><div class="kv ${c}">${v}</div><div class="ks">${s}</div></div>`;
+const sec=(t,s,b)=>`<div class="card"><div class="ch"><b>${t}</b>${s?`<div class="sub">${s}</div>`:''}</div><div class="cb">${b}</div></div>`;
+const emp=(t,s)=>`<div class="emp"><i>${ic('o')}</i><br><b>${t}</b><div class="sub">${s}</div></div>`;
+const bt=(t,f,c='')=>`<button class="b ${c}" onclick="${f}">${c==='p'?ic('plus'):''}${t}</button>`;
+const tb=(h,r)=>`<div class="wrap"><table><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr>${r}</table></div>`;
+const cls=n=>n>=0?'pos':'neg',pct=r=>r===null?'—':r.toFixed(1)+'%';
+const prev=l=>addD(l.data,l.sp==='Pato'?28:21);
+function stats(){const o={},tot=live('Galinha')+live('Pato');SP.forEach(s=>o[s]={rec:0,cus:0});
+ D.vendas.filter(inP).forEach(v=>o[v.sp].rec+=v.total);
+ D.custos.filter(inP).forEach(c=>{if(c.sp==='Geral')SP.forEach(s=>o[s].cus+=c.valor*(tot?live(s)/tot:.5));else o[c.sp].cus+=c.valor});
+ SP.forEach(s=>{const x=o[s];x.luc=x.rec-x.cus;x.roi=x.cus>0?x.luc/x.cus*100:null});return o}
+function alertas(){const a=[],r=D.racao;if(leftMs()<=2*864e5)a.push('A licença expira em '+tleft()+'. Contacte o desenvolvedor para renovar.');
+ D.incub.filter(l=>!l.fim).forEach(l=>{const x=dd(prev(l),today());if(x<=2)a.push(`Lote de ${l.sp.toLowerCase()}s (${fmt(l.data)}): `+(x<0?`a data prevista (${fmt(prev(l))}) já passou. Registe os ovos chocados.`:x===0?'os ovos devem chocar hoje.':`os ovos devem chocar em ${x} dia${x>1?'s':''}.`))});
+ if(r.dia>0&&r.kg/r.dia<=7)a.push('A ração dá para menos de 7 dias.');
+ D.saude.forEach(h=>{if(h.prox){const x=dd(h.prox,today());if(x<=2)a.push(`${esc(h.acao)}: próxima dose `+(x<0?'em atraso ('+fmt(h.prox)+')':x===0?'hoje':'em '+x+' dia'+(x>1?'s':''))+'.')}});return a}
+/* ações com modal */
+function pagar(id){D.vendas.find(v=>v.id===id).pago=true;save();render()}
+function compraRacao(){const q=num('q'),kg=num('kg'),p=num('p');if(q<=0||kg<=0)return;D.racao.kg+=q*kg;if(p>0)D.custos.push({id:uid(),data:today(),cat:'Ração',sp:'Geral',valor:p,desc:q+' saco(s) de '+kg+' kg'});save();render()}
+function usarRacao(){const k=num('k');if(k<=0||k>D.racao.kg)return alert('Não há ração suficiente em stock.');D.racao.kg-=k;save();render()}
+function addSaude(){if(!val('x').trim())return alert('Diga o que foi feito.');D.saude.push({id:uid(),data:val('d'),sp:val('s'),acao:val('x').trim(),prox:val('n')});save();render()}
+function perda(){const n=parseInt(val('n'));if(!n||n<0||n>D.aves[PS][PT])return alert('Esse número é maior do que as aves que tem.');D.aves[PS][PT]-=n;D.mort[PS]+=n;D.mortLog.push({data:today(),sp:PS,tipo:PT,n,causa:val('c').trim()||'Não indicada'});save();render()}
+function cresc(){const n=parseInt(val('n'));if(!n||n<0||n>D.aves[PS].Cria)return alert('Esse número é maior do que as crias que tem.');D.aves[PS].Cria-=n;D.aves[PS].Adulta+=n;save();render()}
+function setSenha(){const p=val('p1');if(p.length<4)return alert('Use pelo menos 4 caracteres.');if(p!==val('p2'))return alert('As senhas não coincidem.');D.pin=p;OK=true;save();render()}
+const T=(id,l)=>fld(l,inp(id));
+const mAves=()=>openM('Adicionar aves',fld('Espécie',sel('s',SP))+fld('Tipo',sel('t',[['Adulta','Adultas'],['Cria','Crias']]))+T('q','Quantidade')+T('c','Custo de aquisição (MZN, opcional)'),'Guardar','addAves()');
+const mPerda=(s,t)=>{PS=s;PT=t;openM('Perdi aves',T('n','Quantas aves perdeu?')+fld('O que aconteceu?',inp('c','text'))+'<div class="sub">Ex.: doença, frio, predador.</div>','Guardar','perda()')};
+const mCresc=s=>{PS=s;openM('Crias que passaram a adultas',T('n','Quantas crias?'),'Guardar','cresc()')};
+const mPostura=()=>openM('Registar postura',fld('Data',inp('d','date',today()))+fld('Espécie',sel('s',SP))+T('q','Ovos postos')+T('i','Destes, quantos vão para a incubadora')+'<div class="sub">Os restantes entram no stock de ovos.</div>','Guardar','addPostura()');
+function mChocar(){const o=D.incub.filter(l=>!l.fim);if(!o.length)return alert('Não há lotes em curso. Registe uma postura com ovos para a incubadora.');
+ openM('Registar ovos chocados',fld('Lote',sel('l',o.map(l=>[l.id,`${fmt(l.data)} · ${l.sp} · faltam ${l.colocados-l.chocados}`])))+fld('Data',inp('d','date',today()))+T('c','Ovos chocados')+'<label class="chk"><input id="e" type="checkbox"> Encerrar lote (os restantes ficam como perdidos)</label>','Guardar','chocar()')}
+const mFavos=()=>openM('Adicionar favos',fld('Espécie',sel('s',SP))+fld('Tipo',sel('t',['Favos completos','Favo incompleto (nº de ovos)']))+T('q','Quantidade'),'Adicionar','addFavo()');
+const mBaixa=()=>openM('Tirar do stock',fld('Espécie',sel('s',SP))+T('q','Ovos (partidos ou consumo próprio)'),'Tirar','baixaOvos()');
+const mAbater=()=>openM('Abater aves',fld('Espécie',sel('s',SP))+fld('Origem',sel('t',[['Adulta','Adultas'],['Cria','Crias']]))+T('q','Quantidade'),'Abater','abater()');
+const mGasto=()=>openM('Novo gasto',fld('Data',inp('d','date',today()))+fld('Categoria',sel('c',['Ração','Vacinas e medicamentos','Energia e água','Mão de obra','Aquisição de aves','Outros']))+fld('Associado a',sel('s',['Geral','Galinha','Pato']))+T('v','Valor (MZN)')+fld('Descrição (opcional)',inp('x','text')),'Guardar','addCusto()');
+const mVenda=()=>openM('Nova venda',fld('Data',inp('d','date',today()))+fld('Produto',sel('t',[['abat','Ave abatida'],['ovos','Ovos'],['cria','Crias']]))+fld('Espécie',sel('s',SP))+fld('Unidade (só para ovos)',sel('u',['Ovo','Favo']))+T('q','Quantidade')+T('p','Preço unitário (MZN)')+fld('Cliente (opcional)',inp('cl','text'))+fld('Pagamento',sel('pg',['Pago','Fiado'])),'Vender','addVenda()');
+const mSaude=()=>openM('Novo registo de saúde',fld('Data',inp('d','date',today()))+fld('Aves',sel('s',['Todas','Galinha','Pato']))+fld('O que foi feito',inp('x','text'))+fld('Próxima dose (opcional)',inp('n','date')),'Guardar','addSaude()');
+const mCompra=()=>openM('Comprei ração',T('q','Sacos')+fld('Kg por saco',inp('kg','number',25))+T('p','Total pago (MZN)')+'<div class="sub">O valor pago entra nos gastos.</div>','Guardar','compraRacao()');
+const mUsar=()=>openM('Dar ração',T('k','Kg usados'),'Registar','usarRacao()');
+const mSenha=()=>openM(D.pin?'Alterar senha':'Definir senha',fld('Nova senha',inp('p1','password'))+fld('Repetir senha',inp('p2','password')),'Guardar','setSenha()');
+/* páginas */
+let IP;addEventListener('beforeinstallprompt',e=>{e.preventDefault();IP=e;if(PAGE==='aj')render()});
+const keep=()=>({lic:D.lic,pin:D.pin,logo:D.logo,nome:D.nome,favo:D.favo});
+function limpar(){if(!confirm('Apagar TODOS os dados (aves, ovos, vendas, gastos...)? A licença, a senha e o logótipo mantêm-se.'))return;D=Object.assign(def(),keep());save();go('dash')}
+function demo(){if(!confirm('Carregar dados de teste? Isto substitui os dados atuais.'))return;const t=today(),a=n=>addD(t,-n);
+ D=Object.assign(def(),keep(),{aves:{Galinha:{Adulta:24,Cria:35},Pato:{Adulta:12,Cria:18}},mort:{Galinha:3,Pato:1},
+ mortLog:[{data:a(12),sp:'Galinha',tipo:'Cria',n:3,causa:'Frio'},{data:a(6),sp:'Pato',tipo:'Adulta',n:1,causa:'Predador'}],
+ postura:[{id:'p1',data:a(10),sp:'Galinha',qtd:60},{id:'p2',data:a(5),sp:'Pato',qtd:30}],
+ incub:[{id:'i1',sp:'Galinha',data:a(30),colocados:30,chocados:26,fim:a(9)},{id:'i2',sp:'Pato',data:a(27),colocados:20,chocados:0,fim:''},{id:'i3',sp:'Galinha',data:a(6),colocados:24,chocados:0,fim:''}],
+ ovos:{Galinha:75,Pato:40},abat:{Galinha:14,Pato:6},racao:{kg:62,dia:6},
+ custos:[{id:'c1',data:a(25),cat:'Ração',sp:'Geral',valor:3200,desc:'8 sacos de 25 kg'},{id:'c2',data:a(14),cat:'Vacinas e medicamentos',sp:'Galinha',valor:650,desc:'Vacina Newcastle'},{id:'c3',data:a(8),cat:'Aquisição de aves',sp:'Pato',valor:1800,desc:'12 patos adultos'},{id:'c4',data:a(3),cat:'Ração',sp:'Geral',valor:2400,desc:'6 sacos de 25 kg'}],
+ vendas:[{id:'v1',data:a(20),tipo:'abat',sp:'Galinha',qtd:6,un:'un',base:6,preco:450,total:2700,cliente:'Mercado Central',pago:true},{id:'v2',data:a(9),tipo:'ovos',sp:'Galinha',qtd:4,un:'Favo',base:120,preco:210,total:840,cliente:'Dona Rosa',pago:true},{id:'v3',data:a(4),tipo:'abat',sp:'Pato',qtd:3,un:'un',base:3,preco:700,total:2100,cliente:'Sr. Mussa',pago:false},{id:'v4',data:a(3),tipo:'ovos',sp:'Pato',qtd:20,un:'Ovo',base:20,preco:15,total:300,cliente:'',pago:true},{id:'v5',data:a(2),tipo:'cria',sp:'Galinha',qtd:10,un:'un',base:10,preco:120,total:1200,cliente:'Vizinho',pago:true}],
+ saude:[{id:'s1',data:a(30),sp:'Todas',acao:'Vacina contra Newcastle',prox:addD(t,1)},{id:'s2',data:a(10),sp:'Pato',acao:'Desparasitação',prox:addD(t,20)}]});save();go('dash')}
+function dash(){const st=stats(),rec=st.Galinha.rec+st.Pato.rec,cus=st.Galinha.cus+st.Pato.cus,luc=rec-cus,roi=cus>0?luc/cus*100:null,al=alertas();
+ const porR=D.vendas.filter(v=>v.pago===false).reduce((a,v)=>a+v.total,0),prod={};D.vendas.filter(inP).forEach(v=>{const k=lbl(v.tipo,v.sp);prod[k]=(prod[k]||0)+v.total});
+ const it=Object.entries(prod).sort((a,b)=>b[1]-a[1]),mx=it.length?it[0][1]:1,m={},g=k=>m[k]=m[k]||{r:0,g:0};
+ D.vendas.forEach(v=>g(v.data.slice(0,7)).r+=v.total);D.custos.forEach(c=>g(c.data.slice(0,7)).g+=c.valor);
+ const ks=Object.keys(m).sort().slice(-6),mm=Math.max(1,...ks.flatMap(k=>[m[k].r,m[k].g]));
+ return head('Painel','Resumo da exploração',PER==='all'?'Todos os registos desde o início':'Este mês',`<div class="seg"><button class="${PER==='all'?'on':''}" onclick="PER='all';render()">Tudo</button><button class="${PER==='m'?'on':''}" onclick="PER='m';render()">Este mês</button></div>`)
+ +`<div class="hero"><div class="k">LUCRO DO PERÍODO</div><div class="v">${mzn(luc)}</div><div class="ft"><span>Retorno sobre gastos (ROI)</span><b>${pct(roi)}</b></div></div>`
+ +`<div class="grid">${kp('Vendas',mzn(rec),'Entradas do período','money')}${kp('Gastos',mzn(cus),'Custos do período','wallet')}${kp('Por receber',mzn(porR),'Vendas fiadas por pagar','',porR?'neg':'')}${kp('Saldo',mzn(luc),'Vendas menos gastos','',cls(luc))}</div>`
+ +`<div class="grid g3">${SP.map(s=>kp(s==='Pato'?'Patos vivos':'Galinhas vivas',live(s),`${D.aves[s].Adulta} adultas · ${D.aves[s].Cria} crias`,'bird','','aves')).join('')}${SP.map(s=>kp('Ovos de '+(s==='Pato'?'pato':'galinha'),D.ovos[s],nacub(s)+' na incubadora','egg','','stock')).join('')}${kp('Prontas a vender',D.abat.Galinha+D.abat.Pato,`${D.abat.Galinha} galinhas · ${D.abat.Pato} patos`,'leg','','abat')}${kp('Ração em stock',D.racao.kg+' kg',D.racao.dia>0?'dá para '+Math.floor(D.racao.kg/D.racao.dia)+' dias':'indique o gasto diário','grain','','racao')}</div>`
+ +sec('Mês a mês','Vendas (verde) e gastos (vermelho) dos últimos meses',ks.length?ks.map(k=>`<div class="bar"><span>${k}</span><div class="t"><i style="width:${m[k].r/mm*100}%"></i><i style="width:${m[k].g/mm*100}%;height:7px;margin-top:4px;background:var(--r)"></i></div><b class="${cls(m[k].r-m[k].g)}">${mzn(m[k].r-m[k].g)}</b></div>`).join(''):emp('Sem movimentos','Registe uma venda ou um gasto para ver a evolução.'))
+ +sec('Atenção','O que precisa da sua atenção',al.length?al.map(x=>`<div class="nt">${x}</div>`).join(''):`<div class="ok">${ic('check')} Está tudo em dia.</div>`)
+ +sec('O que mais rende','Total em vendas por produto',it.length?it.map(([k,v],i)=>`<div class="bar"><span>${k}</span><div class="t"><i class="${i?'':'top'}" style="width:${v/mx*100}%"></i></div><b>${mzn(v)}</b></div>`).join(''):emp('Sem vendas','Registe vendas para ver o que mais rende.'))
+ +sec('Galinhas ou patos?','O que rende mais na exploração',`<div class="grid">${SP.map(s=>{const x=st[s];return `<div class="bl"><b>${s==='Pato'?'Patos':'Galinhas'}</b><div class="sp"><span>Vendas</span><span>${mzn(x.rec)}</span></div><div class="sp"><span>Gastos</span><span>${mzn(x.cus)}</span></div><div class="sp"><span>Lucro</span><b class="${cls(x.luc)}">${mzn(x.luc)}</b></div><div class="sp"><span>ROI</span><b>${pct(x.roi)}</b></div></div>`}).join('')}</div>`)}
+function aves(){return head('Produção','Aves','Contagem de aves vivas, crescimento das crias e baixas',bt('Adicionar aves','mAves()','p'))
+ +`<div class="grid">${SP.map(s=>kp(s==='Pato'?'Patos vivos':'Galinhas vivas',live(s),`${D.aves[s].Adulta} adultas · ${D.aves[s].Cria} crias`,'bird')).join('')}</div>`
+ +sec('Aves em casa','Atualize à medida que o plantel muda',SP.map(s=>`<div class="bl"><div class="sp"><b>${s==='Pato'?'Patos':'Galinhas'}</b><b class="pos">${live(s)} aves</b></div>${['Adulta','Cria'].map(t=>`<div class="sp"><span>${t==='Adulta'?'Adultas':'Crias'} <b>${D.aves[s][t]}</b></span><span>${t==='Cria'?bt('Passaram a adultas',`mCresc('${s}')`,'s')+' ':''}${bt('Perdi aves',`mPerda('${s}','${t}')`,'s')}</span></div>`).join('')}</div>`).join(''))
+ +sec('Aves perdidas','Últimas baixas registadas',D.mortLog.length?D.mortLog.slice(-8).reverse().map(m=>`<div class="sp"><span>${fmt(m.data)} · ${m.n} ${m.sp.toLowerCase()}${m.n>1?'s':''}</span><span class="sub">${esc(m.causa)}</span></div>`).join(''):emp('Sem baixas registadas','Quando perder aves, registe aqui para manter a contagem certa.'))}
+function ovos(){const po=s=>D.postura.filter(p=>p.sp===s).reduce((a,p)=>a+p.qtd,0),fim=D.incub.filter(l=>l.fim),col=fim.reduce((a,l)=>a+l.colocados,0),chF=fim.reduce((a,l)=>a+l.chocados,0),cho=D.incub.reduce((a,l)=>a+l.chocados,0);
+ return head('Produção','Ovos e incubadora','Postura diária, lotes na incubadora e taxa de eclosão',bt('Ovos chocados',"mChocar()")+bt('Registar postura','mPostura()','p'))
+ +`<div class="grid">${SP.map(s=>kp('Postos · '+(s==='Pato'?'patos':'galinhas'),po(s),'Total registado','egg')).join('')}${kp('Na incubadora',nacub('Galinha')+nacub('Pato'),'Ovos ainda por chocar','egg')}${kp('Chocados',cho,col?'Taxa de eclosão: '+(chF/col*100).toFixed(0)+'%':'Sem lotes encerrados','',cho?'pos':'')}</div>`
+ +sec('Lotes da incubadora','Galinha 21 dias · Pato 28 dias',D.incub.length?tb(['Entrada','Espécie','Ovos','Chocaram','Previsto','Estado'],D.incub.slice().reverse().map(l=>`<tr><td>${fmt(l.data)}</td><td>${l.sp}</td><td>${l.colocados}</td><td>${l.chocados}${l.fim?` (${(l.chocados/l.colocados*100).toFixed(0)}%)`:''}</td><td>${l.fim?'—':fmt(prev(l))}</td><td>${l.fim?'Encerrado':'Em curso'}</td></tr>`).join('')):emp('Nenhum lote na incubadora','Registe uma postura com ovos para incubar.'))}
+function stock(){return head('Produção','Ovos em stock',`Um favo equivale a ${D.favo} ovos`,bt('Tirar do stock','mBaixa()')+bt('Adicionar favos','mFavos()','p'))
+ +`<div class="grid">${SP.map(s=>kp('Ovos de '+(s==='Pato'?'pato':'galinha'),D.ovos[s],D.ovos[s]?favos(D.ovos[s]):'sem ovos','egg')).join('')}</div>`
+ +sec('Como funciona','O stock atualiza-se sozinho',`<div class="sub" style="line-height:2">• As posturas entram no stock automaticamente, exceto os ovos que vão para a incubadora.<br>• Ao vender ovos, o stock é descontado (um favo conta como ${D.favo} ovos).<br>• Use “Tirar do stock” para ovos partidos ou consumidos em casa.<br>• O tamanho do favo pode ser alterado nos Ajustes.</div>`)}
+function abat(){return head('Produção','Prontas a vender','Aves abatidas à espera de venda',bt('Abater aves','mAbater()','p'))
+ +`<div class="grid">${SP.map(s=>kp((s==='Pato'?'Patos':'Galinhas')+' prontas',D.abat[s],'Disponíveis para venda','leg','pos')).join('')}</div>`
+ +sec('Como funciona','',`<div class="sub">Ao abater, as aves saem do plantel vivo e entram neste stock. Cada venda de ave abatida desconta automaticamente uma unidade.</div>`)}
+function racao(){const d=D.racao,dias=d.dia>0?Math.floor(d.kg/d.dia):null;
+ return head('Produção','Ração','Stock, consumo diário e avisos de reposição',bt('Dar ração','mUsar()')+bt('Comprei ração','mCompra()','p'))
+ +`<div class="grid g3">${kp('Em stock',d.kg+' kg','Disponível','grain')}${kp('Dá para',dias===null?'—':dias+' dias',dias===null?'Indique o consumo diário':'Ao ritmo atual','',dias!==null&&dias<=7?'neg':'')}${kp('Consumo diário',d.dia?d.dia+' kg':'—','Média usada nos avisos')}</div>`
+ +sec('Ajustes da ração','Use este valor para os avisos de reposição',`<div class="fm">${fld('Gasto médio por dia (kg)',inp('u','number',d.dia))}${bt('Guardar',"D.racao.dia=num('u');save();render()",'p')}<div class="sub">Receberá um aviso quando o stock der para menos de 7 dias.</div></div>`)}
+function saude(){const l=D.saude.slice().sort((a,b)=>(a.prox||'9')<(b.prox||'9')?-1:1);
+ return head('Produção','Saúde','Vacinas, tratamentos e próximas doses',bt('Novo registo','mSaude()','p'))
+ +sec('Histórico','O que foi feito e quando repetir',l.length?tb(['Data','Aves','O que foi feito','Próxima',''],l.map(h=>`<tr><td>${fmt(h.data)}</td><td>${h.sp}</td><td>${esc(h.acao)}</td><td>${h.prox?fmt(h.prox):'—'}</td><td>${bt('Remover',`del('saude','${h.id}')`,'s d')}</td></tr>`).join('')):emp('Ainda não há registos','Registe vacinas e tratamentos para receber avisos da próxima dose.'))}
+function vendas(){const tot=D.vendas.reduce((a,x)=>a+x.total,0),por=D.vendas.filter(v=>v.pago===false).reduce((a,v)=>a+v.total,0),l=D.vendas.filter(v=>FIL==='all'||v.pago===false).reverse();
+ return head('Financeiro','Vendas','O stock é descontado automaticamente',bt('Nova venda','mVenda()','p'))
+ +`<div class="grid g3">${kp('Total vendido',mzn(tot),D.vendas.length+' vendas','money')}${kp('Por receber',mzn(por),'Vendas fiadas','',por?'neg':'')}${kp('Ticket médio',mzn(D.vendas.length?tot/D.vendas.length:0),'Valor médio por venda')}</div>`
+ +`<div class="acts" style="margin-bottom:12px">${bt('Todas',"FIL='all';render()",'s '+(FIL==='all'?'on':''))}${bt('Só por pagar',"FIL='fiado';render()",'s '+(FIL==='fiado'?'on':''))}</div>`
+ +sec('Registos','Últimas vendas',l.length?tb(['Data','Produto','Qtd','Total',''],l.map(x=>`<tr><td>${fmt(x.data)}</td><td>${lbl(x.tipo,x.sp)}${x.cliente?`<br><span class="sub">${esc(x.cliente)}</span>`:''}</td><td>${x.qtd} ${x.un==='un'?'':x.un.toLowerCase()}</td><td>${mzn(x.total)}</td><td>${x.pago===false?bt('Marcar pago',`pagar('${x.id}')`,'s')+' ':''}${bt('Remover',`del('vendas','${x.id}')`,'s d')}</td></tr>`).join('')):emp('Sem vendas registadas','Registe uma venda para começar a acompanhar as receitas.'))}
+function custos(){const by={};D.custos.forEach(x=>by[x.cat]=(by[x.cat]||0)+x.valor);const tot=D.custos.reduce((a,x)=>a+x.valor,0);
+ return head('Financeiro','Gastos','Ração, saúde, energia e outros custos',bt('Novo gasto','mGasto()','p'))
+ +`<div class="grid">${kp('Total gasto',mzn(tot),Object.entries(by).map(([k,v])=>k+': '+mzn(v)).join(' · ')||'Sem gastos','wallet')}</div>`
+ +sec('Registos','Últimos gastos',D.custos.length?tb(['Data','Categoria','Aves','Valor',''],D.custos.slice().reverse().map(x=>`<tr><td>${fmt(x.data)}</td><td>${x.cat}${x.desc?`<br><span class="sub">${esc(x.desc)}</span>`:''}</td><td>${x.sp}</td><td>${mzn(x.valor)}</td><td>${bt('Remover',`del('custos','${x.id}')`,'s d')}</td></tr>`).join('')):emp('Sem gastos registados','Registe o primeiro gasto para acompanhar os custos.'))}
+function aj(){const ex=leftMs()<=0;
+ return head('Sistema','Ajustes','Exploração, segurança e licença')
+ +sec('Exploração','Nome e logótipo',`<div class="fm">${fld('Nome',inp('nm','text',esc(D.nome)))}<div class="acts">${bt('Guardar nome',"D.nome=val('nm').trim()||'A minha exploração';save();render()",'p')}${bt('Carregar logótipo',"$('#lg').click()")}${D.logo?bt('Repor logótipo',"D.logo='';save();render()",'d'):''}</div></div>`)
+ +sec('Senha de entrada',D.pin?'Senha ativa':'Sem senha',`<div class="acts">${bt(D.pin?'Alterar senha':'Definir senha','mSenha()','p')}${D.pin?bt('Remover senha',"if(confirm('Remover a senha de entrada?')){D.pin='';save();render()}",'d'):''}</div>`)
+ +sec('Licença','Validade e ativação',`<div class="sp"><span>Válida até</span><b>${fmt(D.lic.exp)} às 00:00</b></div><div class="sp"><span>Tempo restante</span><b class="${leftMs()<=2*864e5?'neg':'pos'}">${tleft()}</b></div><div class="fm" style="margin-top:10px">${fld('Código de licença',inp('lc','text'))}${bt('Ativar código',"ativar(val('lc'))",'p')}</div>`)
+ +sec('Favo de ovos','Quantos ovos tem um favo completo',`<div class="fm">${fld('Ovos por favo',inp('fv','number',D.favo))}${bt('Atualizar',"setFavo()",'p')}</div>`)
+ +sec('Instalar a app','No telemóvel ou no computador',IP?bt('Instalar a app','IP.prompt()','p'):'<div class="sub">No Chrome: menu ⋮ → Instalar app (ou Adicionar ao ecrã inicial).</div>')+sec('Dados de teste','Experimente com dados de exemplo ou entregue o sistema limpo ao cliente',`<div class="acts">${bt('Carregar dados de teste','demo()')}${bt('Limpar todos os dados','limpar()','d')}</div>`)+sec('Instalação','Use como app no telemóvel ou no computador',`<div class="acts">${bt('Instalar app','instalar()','p')}</div>`)
+ +sec('Cópia de segurança','Os dados ficam guardados neste aparelho',`<div class="acts">${bt('Guardar cópia','exportar()')}${bt('Importar cópia',"$('#imp').click()")}${bt('Imprimir relatório','print()')}</div>`)}
+const NAV=[['PAINEL',[['dash','Resumo','grid']]],['PRODUÇÃO',[['aves','Aves','bird'],['ovos','Ovos e incubadora','egg'],['stock','Ovos em stock','box'],['abat','Prontas a vender','leg'],['racao','Ração','grain'],['saude','Saúde','heart']]],['FINANCEIRO',[['vendas','Vendas','money'],['custos','Gastos','wallet']]],['',[['aj','Ajustes','gear']]]];
+const PG={dash,aves,ovos,stock,abat,racao,saude,vendas,custos,aj};
+const go=p=>{PAGE=p;render();scrollTo(0,0)};
+function openD(){$('#dr').innerHTML=`<div class="bk" onclick="$('#dr').innerHTML=''"></div><div class="dw"><div class="shh"><div style="display:flex;gap:12px;align-items:center"><div class="lg">${logo()}</div><div><b style="font-size:15px">${esc(D.nome)}</b><div class="sub">Gestão avícola</div></div></div><button class="x" onclick="$('#dr').innerHTML=''">${ic('x')}</button></div>${NAV.map(([h,a])=>(h?`<div class="nh">${h}</div>`:'<div style="height:14px"></div>')+a.map(([k,n,i])=>`<button class="ni ${k===PAGE?'on':''}" onclick="go('${k}')">${ic(i)}${n}</button>`).join('')).join('')}</div>`}
+function render(){closeM();$('#dr').innerHTML='';$('#hd').innerHTML=`<div class="lg">${logo()}</div><div><b>${esc(D.nome)}</b><span>Gestão avícola</span></div><button class="mb" onclick="openD()">${ic('menu')}</button>`;
+ const n=PAGE==='dash'?[]:alertas();$('#main').innerHTML=(n.length?`<div class="nt">${n.join('<br>')}</div>`:'')+PG[PAGE]()}
+gate();
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
